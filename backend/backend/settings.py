@@ -183,8 +183,13 @@ CMS_LANGUAGES = {
 CMS_TEMPLATES = (
     ## Customize this
     ('page.html', 'Page'),
-    ('feature.html', 'Page with Feature')
+    ('main.html', 'Main page'),
+    ('test.html', 'Test'),
+    ('feature.html', 'Page with Feature'),
+    ('offices.html', 'Offices'),
+    ('corporate_cliens.html','corporate_cliens.html')
 )
+
 
 CMS_PERMISSION = True
 
