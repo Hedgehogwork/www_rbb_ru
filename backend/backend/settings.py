@@ -187,7 +187,13 @@ CMS_TEMPLATES = (
     ('test.html', 'Test'),
     ('feature.html', 'Page with Feature'),
     ('offices.html', 'Offices'),
-    ('corporate_cliens.html','corporate_cliens.html')
+    ('corporate_cliens/corporate_cliens.html','Corporate clients'),
+    ('credit-institutions/credit-institutions.html','credit-institutions'),
+    ('plastic-cards/plastic-cards.html','plastic-cards'),
+    ('implementation-collateral-property/implementation-collateral-property.html','implementation-collateral-property'),
+    ('rates/rates.html','rates'),
+    ('forms-and-documents/forms-and-documents.html','forms-and-documents'),
+    ('private-customers/private-customers.html','private-customers')
 )
 
 
