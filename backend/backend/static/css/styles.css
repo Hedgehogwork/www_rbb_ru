@@ -54,7 +54,10 @@ body {
 
 @media (min-width: 1920px) {
   .container {
-    width: 1280px;
+    /*width: 1280px;*/
+  }
+  .carousel .slider-title {
+    /*margin-top: 55%;*/
   }
 }
 
@@ -210,11 +213,13 @@ body {
 
 .carousel img {
     width: 100%;
+    height: 500px;
 }
 
 .carousel .slider-title {
     margin: 0;
-    margin-top: -80px;
+    /*margin-top: -80px;*/
+    margin-top: 51%;
     padding: 0;
     color: #fff;
 }
@@ -263,6 +268,12 @@ body {
     margin-left: 10px;
 }
 
+@media (min-width: 1981px) {
+    .main-page {
+        margin-top: 39%;
+    }
+}
+
 @media (max-width: 1980px) {
     .main-page {
         margin-top: 46%;
@@ -277,7 +288,7 @@ body {
 
 @media (max-width: 1600px) {
     .main-page {
-        margin-top: 45%;
+        margin-top: 50%;
     }
 }
 
@@ -295,7 +306,10 @@ body {
 
 @media (max-width: 1300px) {
     .main-page {
-        margin-top: 41.5%;
+        margin-top: 61.5%;
+    }
+    .carousel .slider-title {
+        margin-top: 67%;
     }
 }
 
@@ -381,7 +395,11 @@ body {
         font-size: 11px;
     }
 }
-
+@media (min-width: 1599px) {
+    .carousel .slider-title {
+        margin-top: 68%;
+    }
+}
 @media (max-width: 430px) { 
     .main-page {
         margin-top: 25%;
@@ -396,7 +414,7 @@ body {
         margin-top: 20%;
     }
     .carousel .slider-title {
-        margin-top: -60px;
+        /*margin-top: -60px;*/
     }
 }
 
@@ -423,7 +441,7 @@ body {
 }
 
 .hot-line-block .hot-line-phone {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 20px;
 }
 
@@ -592,4 +610,33 @@ body {
     font-size: 12px;
     line-height: 20px;
     padding: 15px 0;
+}
+
+.main-page-header .carousel-inner {
+    height: 700px;
+}
+
+.main-page-header .carousel-inner .item {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.carousel-inner .item:before {
+        content: " ";
+       height: 200px;
+    background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* Standard syntax (must be last) */
+}
+.carousel-inner .item:after {
+        content: " ";
+    height: 200px;
+    background: -webkit-linear-gradient(left, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(255,0,0,0), rgba(255,0,0,1)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)); /* Standard syntax (must be last) */
 }
