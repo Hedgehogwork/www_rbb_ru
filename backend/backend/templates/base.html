@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags menu_tags %}
+{% load cms_tags staticfiles sekizai_tags menu_tags cbr_rates %}
 <!doctype html>
 <html>
     <head>
@@ -21,6 +21,8 @@
     </head>
 
     <body>
+    {% get_cbr_rates as cbr_rates %}
+
 
         {% cms_toolbar %}
 
@@ -32,7 +34,5 @@
         {% include "partials/scripts.html" %}
 
         {% render_block "js" %}
-!!!
-<iframe id="cbr" src="http://www.cbr.ru/scripts/XML_daily.asp" style="display:none;"> </iframe>
     </body>
 </html>
