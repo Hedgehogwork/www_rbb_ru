@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}This is my new project home page{% endblock title %}</title>
+        <title>{% block title %}www.rbb.ru - РОСБИЗНЕСБАНК{% endblock title %}</title>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
 
@@ -26,7 +26,29 @@
     <body>
 	{% cms_toolbar %}
         <div class="container-fluid main-page-header">
-           <div class="carousel slide">
+           <div class="container" style=" position: relative; z-index: 1000;">
+                <div class="row main-page-nav">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 big-logo"><img src={% static "img/big-logo.png" %} alt=""></div>
+                    <div class="col-lg-9 col-lg-offset-1 col-md-9 col-md-offset-1 col-sm-9 col-sm-offset-1 col-xs-9 col-xs-offset-1 main-nav">
+                        <div class="navbar">
+                           <div class="navbar-header">
+                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-main-menu">
+                                   <span class="sr-only">Открыть навигацию</span>
+                                   <span class="icon-bar"></span>
+                                   <span class="icon-bar"></span>
+                                   <span class="icon-bar"></span>
+                               </button>
+                            </div>
+                           <div class="collapse navbar-collapse" id="responsive-main-menu">
+                               <ul class="nav navbar-nav">
+                                    {% show_menu 0 1 100 100 "menu.html" %}
+                               </ul>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+            </div>
+           <div class="carousel slide" style="top: -110px;">
                 <div class="carousel-inner">
                     <div class="item active" style="background-image: url('{% static "img/slide-1.jpg" %}');">
 {#                        <img src= alt="">#}
@@ -84,28 +106,7 @@
                 </div>
 -->
             </div>
-            <div class="container">
-                <div class="row main-page-nav">
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 big-logo"><img src={% static "img/big-logo.png" %} alt=""></div>
-                    <div class="col-lg-9 col-lg-offset-1 col-md-9 col-md-offset-1 col-sm-9 col-sm-offset-1 col-xs-9 col-xs-offset-1 main-nav">
-                        <div class="navbar">
-                           <div class="navbar-header">
-                               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-main-menu">
-                                   <span class="sr-only">Открыть навигацию</span>
-                                   <span class="icon-bar"></span>
-                                   <span class="icon-bar"></span>
-                                   <span class="icon-bar"></span>
-                               </button>
-                            </div>
-                           <div class="collapse navbar-collapse" id="responsive-main-menu">
-                               <ul class="nav navbar-nav">
-                                    {% show_menu 0 1 100 100 "menu.html" %}
-                               </ul>
-                           </div>
-                       </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         
         <div class="container-fluid main-page" id="main-page">
@@ -174,6 +175,29 @@
 	</script>
 
 	{% render_block "js" %}
+<iframe name="cbr" src="http://www.cbr.ru/scripts/XML_daily.asp" style="display:none;"> </iframe>
+
+
+<script>
+  var win = window.frames.cbr;
+  win.postMessage("сообщение", "*");
+
+  function listener(event) {
+    if (event.origin != 'http://www.new.rbb.ru') {
+    // что-то прислали с неизвестного домена - проигнорируем..
+    return;
+    }
+
+  alert( "получено: " + event.data );
+  }
+
+  if (window.addEventListener) {
+    window.addEventListener("message", listener);
+  } else {
+    // IE8
+    window.attachEvent("onmessage", listener);
+  }
+</script>
 
     </body>
 </html>
