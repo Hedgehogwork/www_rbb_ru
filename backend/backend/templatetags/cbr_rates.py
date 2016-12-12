@@ -5,15 +5,23 @@ import pyfscache
 from django import template
 
 register = template.Library()
-cache_it = pyfscache.FSCache('/tmp/rates.cache', minutes=1)
+cache_it = pyfscache.FSCache('/tmp/rates.cache', minutes=60)
 
 
 @register.assignment_tag
 def get_cbr_rates():
-    return get_cbr_rates_cached()
+    try:
+        return cache_it['rates']
+    except KeyError:
+        pass
+    try:
+        result = get_cbr_rates_cached()
+        cache_it['rates'] = result
+        return result
+    except:
+        return None
 
 
-@cache_it
 def get_cbr_rates_cached():
     rates = dict()
 
