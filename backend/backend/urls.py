@@ -15,7 +15,8 @@ urlpatterns = [
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^select2/', include('django_select2.urls')),
-    url(r'^For_CBRF/Deposits.xml', deposits_xml)
+    url(r'^For_CBRF/Deposits.xml', deposits_xml),
+    url(r'^captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += i18n_patterns('',
