@@ -1,12 +1,14 @@
 from django.contrib import admin
-from feedback.models import Theme, Receiver, Feedback
+from models import Theme, Receiver, Feedback
 
 
 class ThemeAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name']
+
 
 class ReceiverAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'email']
+
 
 class FeedbackAdmin(admin.ModelAdmin):
     pass
