@@ -18,7 +18,7 @@
                         {% show_breadcrumb "partials/breadcrumb.html" %}
                     </ul>
 
-                    <form method="POST" action="{% url "feedback-add" %}" id="feedback_form">
+                    <form enctype="multipart/form-data" method="POST" action="{% url "feedback-add" %}" id="feedback_form">
                         {%  csrf_token %}
                         {{  form  }}
                        <button type="submit" form="feedback_form" value="Submit">Submit</button>

@@ -227,3 +227,11 @@ DATABASES = {
 MIGRATION_MODULES = {
     'captcha': 'captcha.south_migrations',
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'mail.rbb.ru'
+EMAIL_HOST_USER = 'httpsite@rbb.ru'
+EMAIL_HOST_PASSWORD = 'insert_password_here'
+EMAIL_PORT = 587
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'httpsite@rbb.ru'
