@@ -1,0 +1,13 @@
+*.pyc
+*.o
+*.d
+*#
+*.log
+*core.*.local.*
+.vagrant
+*.csproj
+*.csproj.user
+*.sln
+*.userprefs
+.idea
+.svn
