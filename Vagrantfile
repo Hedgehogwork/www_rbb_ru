@@ -7,10 +7,15 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder ".", "/home/vagrant/www_rbb_ru"
 
-  config.vm.provision "djangoinstall",
+  config.vm.provision "aptinstall",
     type: "shell",
-    path: "provision/django.sh",
+    path: "provision/apt_reqs.sh",
     preserve_order: true,
     privileged: true
+
+  config.vm.provision "djangoinstall",
+    type: "shell",
+    path: "provision/django_reqs.sh",
+    preserve_order: true
 
 end

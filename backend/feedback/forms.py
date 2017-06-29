@@ -21,7 +21,7 @@ class FeedbackModelForm(forms.ModelForm):
         theme = self.cleaned_data['theme']
         receivers = Receiver.objects.filter(theme=theme).values_list('email', flat=True)
         from_email = settings.DEFAULT_FROM_EMAIL
-        subject = u"New feedback"
+        subject = u"{0}:{1}".format(theme.name, self.cleaned_data['name'])
         text_content = render_to_string(template_text, self.cleaned_data)
         html_content = render_to_string(template_html, self.cleaned_data)
         msg = EmailMultiAlternatives(subject, text_content, from_email, receivers)

@@ -4,3 +4,4 @@ theme: {{ theme }}
 name: {{  name }}
 email: {{ email }}
 body: {{ body }}
+body: {{ ip }}
