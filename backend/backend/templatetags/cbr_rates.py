@@ -32,7 +32,9 @@ def get_cbr_rates_cached():
     cbr = parse(text)
 
     rates['Date'] = cbr['ValCurs']['@Date']
+
     for valute in cbr['ValCurs']['Valute']:
         valute['Value'] = float(valute['Value'].replace(',', '.'))
         rates[valute['CharCode']] = valute
+
     return rates

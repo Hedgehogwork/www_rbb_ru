@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% load cms_tags staticfiles sekizai_tags menu_tags %}
+
+{% block title %}{% page_attribute "page_title" %}{% endblock title %}
+
+
+{% block content %}
+{% include "top-menu.html" %}
+
+
+    <div class="container-fluid corp-page-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+
+                    <ul class="breadcrums">
+                        {% show_breadcrumb "partials/breadcrumb.html" %}
+                    </ul>
+
+{#                    {% placeholder "content" %}#}
+
+                    <h3>Информация о максимальных процентных ставках по вкладам физических лиц<br />
+                        за <span id="DocDate"></span></h3>
+
+                    <p>Наименование кредитной организации -ПАО АРКБ &#39;Росбизнесбанк&#39;<br />
+                        Регистрационный номер кредитной организации - 1405<br />
+                        &nbsp;</p>
+
+                    <table border="1" bordercolor="#ccc" cellpadding="5" cellspacing="0" class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <td colspan="7">По срокам вкладов согласно заключенным договорам с физическими лицами в российских рублях (в процентах)</td>
+                        </tr>
+                        <tr>
+                          <td>До востребования</td>
+                          <td>На срок до 90 дней</td>
+                          <td>На срок от 91 до 180 дней</td>
+                          <td>На срок от 181 до 1 года</td>
+                          <td>На срок свыше 1 года</td>
+                        </tr>
+                        <tr>
+                          <td id="DepositsRubCallDep"></td>
+                          <td id="DepositsRubDep90"></td>
+                          <td id="DepositsRubDep91-180"></td>
+                          <td id="DepositsRubDep181-1"></td>
+                          <td id="DepositsRubDep1up"></td>
+                        </tr>
+                            </tbody>
+                        </table>
+
+                        <p><br />
+                        &nbsp;</p>
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td colspan="7">По срокам вкладов согласно заключенным договорам с физическими лицами в долларах США (в процентах)</td>
+                                </tr>
+                                <tr>
+                                    <td>До востребования</td>
+                                    <td>На срок до 90 дней</td>
+                                    <td>На срок от 91 до 180 дней</td>
+                                    <td>На срок от 181 до 1 года</td>
+                                    <td>На срок свыше 1 года</td>
+                                </tr>
+                                <tr>
+                          <td id="DepositsUSDCallDep"></td>
+                          <td id="DepositsUSDDep90"></td>
+                          <td id="DepositsUSDDep91-180"></td>
+                          <td id="DepositsUSDDep181-1"></td>
+                          <td id="DepositsUSDDep1up"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p><br />
+                        &nbsp;</p>
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td colspan="7">По срокам вкладов согласно заключенным договорам с физическими лицами в евро (в процентах)</td>
+                                </tr>
+                                <tr>
+                                    <td>До востребования</td>
+                                    <td>На срок до 90 дней</td>
+                                    <td>На срок от 91 до 180 дней</td>
+                                    <td>На срок от 181 до 1 года</td>
+                                    <td>На срок свыше 1 года</td>
+                                </tr>
+                                <tr>
+                          <td id="DepositsEurCallDep"></td>
+                          <td id="DepositsEurDep90"></td>
+                          <td id="DepositsEurDep91-180"></td>
+                          <td id="DepositsEurDep181-1"></td>
+                          <td id="DepositsEurDep1up"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>&nbsp;</p>
+
+
+                </div>
+
+                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12 aside-block">
+
+                    {% include 'partials/menu.html' %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    {% addtoblock "js" %}
+<script>
+
+  function renderXml(xmlDOC){
+      $('#DocDate').html($(xmlDOC).find('CredOrgDepRate').attr('DocDate'));
+
+      $('#DepositsRubCallDep').html($(xmlDOC).find('DepositsRub').find('CallDep'));
+      $('#DepositsRubDep90').html($(xmlDOC).find('DepositsRub').find('Dep90'));
+      $('#DepositsRubDep91-180').html($(xmlDOC).find('DepositsRub').find('Dep91-180'));
+      $('#DepositsRubDep181-1').html($(xmlDOC).find('DepositsRub').find('Dep181-1'));
+      $('#DepositsRubDep1up').html($(xmlDOC).find('DepositsRub').find('Dep1up'));
+
+      $('#DepositsUSDCallDep').html($(xmlDOC).find('DepositsUSD').find('CallDep'));
+      $('#DepositsUSDDep90').html($(xmlDOC).find('DepositsUSD').find('Dep90'));
+      $('#DepositsUSDDep91-180').html($(xmlDOC).find('DepositsUSD').find('Dep91-180'));
+      $('#DepositsUSDDep181-1').html($(xmlDOC).find('DepositsUSD').find('Dep181-1'));
+      $('#DepositsUSDDep1up').html($(xmlDOC).find('DepositsUSD').find('Dep1up'));
+
+      $('#DepositsEurCallDep').html($(xmlDOC).find('DepositsEur').find('CallDep'));
+      $('#DepositsEurDep90').html($(xmlDOC).find('DepositsEur').find('Dep90'));
+      $('#DepositsEurDep91-180').html($(xmlDOC).find('DepositsEur').find('Dep91-180'));
+      $('#DepositsEurDep181-1').html($(xmlDOC).find('DepositsEur').find('Dep181-1'));
+      $('#DepositsEurDep1up').html($(xmlDOC).find('DepositsEur').find('Dep1up'));
+
+    }
+
+
+function getXml(url){
+  var result = "";
+  var xml = new XMLHttpRequest();
+
+  xml.open("GET", url, true);
+  xml.onreadystatechange = function () {
+    if (xml.readyState == 4 && xml.status == 200)
+    {
+      var result = xml.responseXML;
+      renderXml(xml.responseXML);
+    }
+  };
+    xml.send(null);
+}
+
+$(document).ready(function () {
+    getXml('/For_CBRF/Deposits.xml');
+});
+
+
+</script>
+{% endaddtoblock "js" %}
+
+
+{% endblock content %}
+

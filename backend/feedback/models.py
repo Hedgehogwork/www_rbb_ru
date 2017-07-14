@@ -41,6 +41,7 @@ class Feedback(models.Model):
     file2 = models.FileField(upload_to=update_filename, null=True, blank=True)
     file3 = models.FileField(upload_to=update_filename, null=True, blank=True)
 
+    ip = models.CharField(max_length=50, null=True, blank=True)
     sent_time = models.DateTimeField(auto_now_add=True)
 
     class Meta:

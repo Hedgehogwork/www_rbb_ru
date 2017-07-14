@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load cms_tags staticfiles sekizai_tags menu_tags %}
+{% load i18n cms_tags staticfiles sekizai_tags menu_tags %}
 
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
@@ -8,7 +8,9 @@
 {% block content %}
 
     {% include 'top-menu.html' %}
-
+<style>
+id_file2
+</style>
     <div class="container-fluid corp-page-main">
         <div class="container">
             <div class="row">
@@ -18,10 +20,31 @@
                         {% show_breadcrumb "partials/breadcrumb.html" %}
                     </ul>
 
-                    <form method="POST" action="{% url "feedback-add" %}" id="feedback_form">
+                    <form enctype="multipart/form-data"  method="POST" action="{% url "feedback-add" %}" id="feedback_form" class="form-horizontal">
                         {%  csrf_token %}
-                        {{  form  }}
-                       <button type="submit" form="feedback_form" value="Submit">Submit</button>
+                        {% for field in form %}
+                          {% if not field.name in 'file2, file3'  %}
+                        <div class="form-group">
+                            {{ field.errors }}
+                        <div class="col-sm-2">
+                           {% if field.name in 'theme'  %}
+                              <label for="id_theme">Тема:</label>
+                           {% else %}
+                             {{ field.label_tag }}
+                           {% endif %}
+
+                        </div>
+                         <div class="col-sm-6">
+                            {{ field }}
+                         </div>
+                          {% if field.help_text %}
+                            <p class="help">{{ field.help_text|safe }}</p>
+                          {% endif %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+		    <input type="hidden" name="user_ip" value="{{ request.META.REMOTE_ADDR|default:"" }}">
+                    <button type="submit" form="feedback_form" value="Submit">Submit</button>
                     </form>
 
                 </div>
@@ -29,5 +52,4 @@
             </div>
         </div>
     </div>
-
 {% endblock content %}
