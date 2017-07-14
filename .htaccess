@@ -1,2 +1,3 @@
 AddHandler wsgi-script .wsgi
 Options +ExecCGI
+Header set Access-Control-Allow-Origin "*"
