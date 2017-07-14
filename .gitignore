@@ -1,0 +1,8 @@
+# IntelliJ project files
+.idea/
+node_modules/
+certs/
+build/
+.DS_Store
+tmp/
+
