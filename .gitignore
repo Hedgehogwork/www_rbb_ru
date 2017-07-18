@@ -4,5 +4,6 @@ node_modules/
 certs/
 build/
 .DS_Store
+.vagrant
 tmp/
 

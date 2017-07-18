@@ -22,8 +22,8 @@ class FeedbackModelForm(forms.ModelForm):
         receivers = Receiver.objects.filter(theme=theme).values_list('email', flat=True)
         from_email = settings.DEFAULT_FROM_EMAIL
         subject = u"{0}:{1}".format(theme.name, self.cleaned_data['name'])
-        text_content = render_to_string(template_text, self.cleaned_data)
-        html_content = render_to_string(template_html, self.cleaned_data)
+        text_content = render_to_string(template_text, {'obj': self.instance})
+        html_content = render_to_string(template_html, {'obj': self.instance})
         msg = EmailMultiAlternatives(subject, text_content, from_email, receivers)
         msg.attach_alternative(html_content, "text/html")
         for i in range(1, 4):

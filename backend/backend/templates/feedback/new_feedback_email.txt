@@ -1,6 +1,6 @@
-От: {{ name }} <{{ email }}>
-IP: {{ ip }}
+От: {{ obj.name }} <{{ obj.email }}>
+IP: {{ obj.ip }}
 
-{{ body }}
+{{ obj.body }}
 
 
